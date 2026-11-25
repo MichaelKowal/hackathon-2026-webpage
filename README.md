@@ -20,7 +20,20 @@ Each `<section class="slide">` in `index.html` is one slide, in order.
 
 Ready-made building blocks: `.kicker`, `.lead`, `.points`, `.cards`/`.card`,
 `.stats`/`.stat`, `.flow`/`.flow__step` (architecture diagram), `.split`
-(two columns), `.team`. Copy a slide and change the text.
+(two columns), `.team`, and `.with-shot` (text next to a screenshot from
+`media/`). Copy a slide and change the text.
+
+App Scorecard look-alikes: `.insights`/`.insight` (a list like the All Insights
+panel), `.sev sev--high` / `.sev sev--medium` (severity markers), `.tag`
+(category label) and `.ui-btn` (an App Designer-style button). Icons are defined
+once at the top of `index.html` and used like
+`<svg class="icon"><use href="#i-sparkle"/></svg>`.
+
+The theme colours are variables at the top of `css/deck.css`. They are matched
+to App Designer: the dark rail, VertiGIS blue, and the red and orange severity
+colours.
+
+Text in `[square brackets]` is a placeholder still to be filled in.
 
 ## Live demos
 

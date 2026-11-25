@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>[Project Name] — Hackathon 2026</title>
+  <title>App Scorecard — Hackathon 2026</title>
   <link rel="stylesheet" href="css/deck.css">
 </head>
 <!--
@@ -11,6 +11,42 @@
   and turns red when you run over. Remove it to get a count-up timer instead.
 -->
 <body data-talk-minutes="5">
+
+<!-- Icons used on the slides: <svg class="icon"><use href="#i-high"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-scorecard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4.5" y="4" width="15" height="17.5" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/>
+    <path d="M8 10.5h1M11 10.5h5M8 14h1M11 14h5M8 17.5h1M11 17.5h5"/>
+  </symbol>
+  <symbol id="i-high" viewBox="0 0 24 24">
+    <path d="M12 2.5 23 21.5H1Z" fill="currentColor"/>
+    <path d="M12 9v6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="18.3" r="1.3" fill="#fff"/>
+  </symbol>
+  <symbol id="i-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="9.5"/><path d="M12 6.8v6.4" stroke-linecap="round"/><circle cx="12" cy="16.8" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-fixed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9.5"/><path d="m7.5 12.3 3 3 6-6.3"/>
+  </symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M10 3.5 11.6 8.4 16.5 10 11.6 11.6 10 16.5 8.4 11.6 3.5 10 8.4 8.4Z"/>
+    <path d="M18 13.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9Z"/>
+    <path d="M18 2.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7Z"/>
+  </symbol>
+  <symbol id="i-branding" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21a9 9 0 1 1 9-9c0 2.5-2 3.5-4 3.5h-2a2 2 0 0 0-1.4 3.4A1.3 1.3 0 0 1 12 21Z"/>
+    <circle cx="7.5" cy="11" r="1.2" fill="currentColor"/><circle cx="10.5" cy="7" r="1.2" fill="currentColor"/><circle cx="15.5" cy="7.5" r="1.2" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-performance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+    <circle cx="12" cy="13.5" r="8"/><path d="M12 13.5V9M10 2.5h4M18.5 6.5l1.5-1.5"/>
+  </symbol>
+  <symbol id="i-maintenance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M14.7 6.3a4 4 0 0 0-5.3 5.2L3.5 17.4l3.1 3.1 5.9-5.9a4 4 0 0 0 5.2-5.3l-2.6 2.6-2.3-.6-.6-2.3Z"/>
+  </symbol>
+  <symbol id="i-dismiss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+    <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/><path d="M4 20 20 4"/>
+  </symbol>
+</svg>
 
 <main id="deck">
 
@@ -20,13 +56,17 @@
        - The id becomes the URL (#/problem), so you can link straight to a slide.
        - data-title is what shows in the slide list and presenter view.
        - <aside class="notes"> is only visible in the presenter view (press P).
+       - Text in [square brackets] is a placeholder to replace.
        ============================================================ -->
 
   <!-- 1. Title -->
   <section class="slide slide--title" id="title" data-title="Title">
     <p class="kicker">VertiGIS Hackathon 2026</p>
-    <h1>[Project Name]</h1>
-    <p class="lead">[One-line tagline: what it does, for whom.]</p>
+    <div class="brand">
+      <span class="brand__icon"><svg><use href="#i-scorecard"/></svg></span>
+      <h1>App Scorecard</h1>
+    </div>
+    <p class="lead">A health check for VertiGIS Studio Web apps, built into App Designer.</p>
     <ul class="team">
       <li>[Team member]</li>
       <li>[Team member]</li>
@@ -34,146 +74,237 @@
       <li>[Team member]</li>
     </ul>
     <aside class="notes">
-      <p>Introduce the team in one breath. Say the tagline out loud — it's the thing judges should remember.</p>
+      <p>Introduce the team. One line: "We built a scorecard that tells you what's wrong with your app and helps you fix it, without leaving App Designer."</p>
     </aside>
   </section>
 
   <!-- 2. Problem -->
   <section class="slide" id="problem" data-title="The problem">
     <p class="kicker">The problem</p>
-    <h2>[A short, sharp statement of the pain.]</h2>
+    <h2>App problems stay hidden until your users find them.</h2>
     <ul class="points">
-      <li>[Who has this problem?]</li>
-      <li>[What does it cost them today — time, errors, money?]</li>
-      <li>[Why hasn't it been solved already?]</li>
+      <li>Errors and deprecated APIs in custom libraries only show up in the browser console.</li>
+      <li>Branding gaps, like a missing description or favicon, are easy to overlook.</li>
+      <li>Performance pitfalls, like layers reprojecting on the fly, are invisible while you design.</li>
+      <li>[Who feels this most? App authors, support, customers…]</li>
     </ul>
     <aside class="notes">
-      <p>Tell it as a story about one real user if you can. Keep this under 45 seconds.</p>
+      <p>If you can, tell a real story: an app that shipped with a broken library or a slow map. Keep this under 45 seconds.</p>
     </aside>
   </section>
 
-  <!-- 3. Solution -->
-  <section class="slide" id="solution" data-title="Our solution">
-    <p class="kicker">Our solution</p>
-    <h2>[What we built, in one sentence.]</h2>
-    <div class="cards">
-      <article class="card">
-        <h3>[Capability 1]</h3>
-        <p>[One or two lines on what it does.]</p>
-      </article>
-      <article class="card">
-        <h3>[Capability 2]</h3>
-        <p>[One or two lines on what it does.]</p>
-      </article>
-      <article class="card">
-        <h3>[Capability 3]</h3>
-        <p>[One or two lines on what it does.]</p>
-      </article>
+  <!-- 3. Meet App Scorecard -->
+  <section class="slide" id="solution" data-title="Meet App Scorecard">
+    <div class="with-shot">
+      <div>
+        <p class="kicker">Our solution</p>
+        <h2>One click scans the app and lists what needs attention.</h2>
+        <ul class="points points--compact">
+          <li>Opens from the <strong>Scorecard</strong> button in App Designer's left rail.</li>
+          <li>Insights are grouped into <strong>Branding</strong>, <strong>Performance</strong> and <strong>Maintenance</strong>.</li>
+          <li>Each insight is sorted by priority and says what's wrong, why it matters and how to fix it.</li>
+        </ul>
+      </div>
+      <figure class="shot">
+        <img src="media/scorecard-all-insights.png" alt="The App Scorecard dialog in App Designer, listing insights by priority">
+        <figcaption>App Scorecard in App Designer (work in progress)</figcaption>
+      </figure>
     </div>
     <aside class="notes">
-      <p>Set up the demo: "Let me show you instead of telling you."</p>
+      <p>Point out the left rail button, the categories with counts, and that High items come first.</p>
     </aside>
   </section>
 
-  <!-- 4. Live demo
-       data-src      URL of the VertiGIS Studio Web app to embed
+  <!-- 4. What it checks -->
+  <section class="slide" id="checks" data-title="What it checks">
+    <p class="kicker">What it checks</p>
+    <h2>Three kinds of insights, each with a priority.</h2>
+    <div class="cards">
+      <article class="card">
+        <h3><svg class="icon"><use href="#i-branding"/></svg>Branding</h3>
+        <p>Does the app look finished?</p>
+        <ul class="points points--compact">
+          <li>No app description</li>
+          <li>No app favicon</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3><svg class="icon"><use href="#i-performance"/></svg>Performance</h3>
+        <p>Will the app be fast?</p>
+        <ul class="points points--compact">
+          <li>Layers in a different spatial reference than the map</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3><svg class="icon"><use href="#i-maintenance"/></svg>Maintenance</h3>
+        <p>Will the app keep working?</p>
+        <ul class="points points--compact">
+          <li>Errors raised by custom libraries</li>
+          <li>Deprecated API usage</li>
+        </ul>
+      </article>
+    </div>
+    <p class="muted">
+      Priorities: <span class="sev-inline sev--high">High</span> ·
+      <span class="sev-inline sev--medium">Medium</span> · [add more checks as you build them]
+    </p>
+    <aside class="notes">
+      <p>Mention that new checks are easy to add. [How many checks do you have by demo day?]</p>
+    </aside>
+  </section>
+
+  <!-- 5. From insight to fix -->
+  <section class="slide" id="fixing" data-title="From insight to fix">
+    <p class="kicker">From insight to fix</p>
+    <h2>Every insight comes with a way to fix it.</h2>
+    <ul class="insights">
+      <li class="insight">
+        <span class="sev sev--high"><svg class="icon"><use href="#i-high"/></svg>High</span>
+        <div>
+          <p class="insight__title">Error in main.js <span class="tag">Maintenance</span></p>
+          <p class="insight__desc">A custom library raised an error in the preview.</p>
+        </div>
+        <span class="insight__actions"><span class="ui-btn">Go to Setting</span></span>
+      </li>
+      <li class="insight">
+        <span class="sev sev--medium"><svg class="icon"><use href="#i-medium"/></svg>Medium</span>
+        <div>
+          <p class="insight__title">No App Description <span class="tag">Branding</span></p>
+          <p class="insight__desc">Descriptions are shown in the portal and in search results.</p>
+        </div>
+        <span class="insight__actions">
+          <span class="ui-btn ui-btn--outline">Add Description</span>
+          <span class="ui-btn ui-btn--outline"><svg class="icon"><use href="#i-sparkle"/></svg>Smart Fix</span>
+        </span>
+      </li>
+      <li class="insight">
+        <span class="sev sev--medium"><svg class="icon"><use href="#i-medium"/></svg>Medium</span>
+        <div>
+          <p class="insight__title">Layers in a Different Spatial Reference <span class="tag">Performance</span></p>
+          <p class="insight__desc">Each layer is reprojected as it draws.</p>
+        </div>
+        <span class="insight__actions"><span class="ui-btn">Go to Setting</span></span>
+      </li>
+    </ul>
+    <div class="cards cards--compact">
+      <article class="card"><h3>Go to Setting</h3><p>Jumps straight to the setting that needs changing.</p></article>
+      <article class="card"><h3><svg class="icon"><use href="#i-sparkle"/></svg>Smart Fix</h3><p>Uses AI to fix it, like writing the description. Fix All does them all.</p></article>
+      <article class="card"><h3><svg class="icon"><use href="#i-dismiss"/></svg>Dismiss</h3><p>Hides what doesn't apply. Rescan to check your work.</p></article>
+    </div>
+    <aside class="notes">
+      <p>This slide is the summary of the demo. If time is short, skip it and show this live instead.</p>
+    </aside>
+  </section>
+
+  <!-- 6. Live demo
+       data-src      URL to embed (e.g. App Designer with the scorecard build)
        data-label    shown in the demo toolbar
        data-preload  load it in the background as soon as the deck opens, so it's warm when you get here
        data-backup   (optional) path/URL to a recorded video to fall back on if the live demo misbehaves
   -->
   <section class="slide slide--demo" id="demo" data-title="Live demo">
-    <header class="slide__header"><h2>Live demo</h2></header>
+    <header class="slide__header"><svg class="icon"><use href="#i-scorecard"/></svg><h2>Live demo — App Scorecard</h2></header>
     <div class="demo"
          data-src=""
-         data-label="VertiGIS Studio Web — with our changes"
+         data-label="VertiGIS Studio App Designer"
          data-preload
          data-backup=""></div>
     <aside class="notes">
       <ol>
-        <li>[Step 1 of the demo script]</li>
-        <li>[Step 2]</li>
-        <li>[Step 3 — the "wow" moment]</li>
+        <li>Open the app in App Designer and click <b>Scorecard</b> in the left rail.</li>
+        <li>Walk the categories: Branding, Performance, Maintenance. High items are at the top.</li>
+        <li>Open a High item and click <b>Go to Setting</b>.</li>
+        <li>On "No App Description", click <b>Smart Fix</b>. This is the wow moment.</li>
+        <li>Dismiss one insight, then <b>Rescan</b> and show the count go down.</li>
       </ol>
-      <p>If it breaks: hit "Backup video" in the demo toolbar and keep talking.</p>
+      <p>App Designer needs sign-in, so it may refuse to load inside the deck. If it does, use <b>New tab ↗</b>. If anything breaks, use <b>Backup video</b>.</p>
     </aside>
   </section>
 
-  <!-- 5. Before / after — two apps side by side -->
+  <!-- 7. Before / after — two apps side by side (delete if you don't need it) -->
   <section class="slide slide--demo" id="before-after" data-title="Before / after">
-    <header class="slide__header"><h2>Before / after</h2></header>
+    <header class="slide__header"><svg class="icon"><use href="#i-fixed"/></svg><h2>Before / after the scorecard fixes</h2></header>
     <div class="demo-compare">
-      <div class="demo" data-src="" data-label="Before — stock Studio Web"></div>
-      <div class="demo" data-src="" data-label="After — with our changes"></div>
+      <div class="demo" data-src="" data-label="Before — app as published"></div>
+      <div class="demo" data-src="" data-label="After — scorecard fixes applied"></div>
     </div>
     <aside class="notes">
-      <p>Do the same action in both apps so the difference is obvious. Delete this slide if you don't need it.</p>
+      <p>Show the same Studio Web app before and after fixing: favicon in the tab, description, faster map. Delete this slide if you don't need it.</p>
     </aside>
   </section>
 
-  <!-- 6. How it works -->
+  <!-- 8. How it works -->
   <section class="slide" id="how-it-works" data-title="How it works">
     <p class="kicker">How it works</p>
-    <h2>[Architecture in one picture]</h2>
+    <h2>[How the scorecard is put together]</h2>
     <ol class="flow">
-      <li class="flow__step"><strong>VertiGIS Studio Web</strong><span>[the app]</span></li>
-      <li class="flow__step flow__step--ours"><strong>[Our component]</strong><span>[custom component / service / workflow]</span></li>
-      <li class="flow__step"><strong>[Data / service]</strong><span>[ArcGIS, API, model…]</span></li>
+      <li class="flow__step"><strong>App Designer</strong><span>App config + live preview</span></li>
+      <li class="flow__step flow__step--ours"><strong>Scorecard checks</strong><span>Branding · Performance · Maintenance</span></li>
+      <li class="flow__step"><strong>Insights</strong><span>Prioritized, with what, why and how to fix</span></li>
+      <li class="flow__step"><strong>Fixes</strong><span>Go to Setting · Fix · <svg class="icon"><use href="#i-sparkle"/></svg> Smart Fix</span></li>
     </ol>
     <ul class="points points--compact">
-      <li>[Key technical decision]</li>
-      <li>[Something hard you solved]</li>
+      <li>[How a check is defined, and how easy it is to add one]</li>
+      <li>[How errors from the preview are captured]</li>
+      <li>[What powers Smart Fix]</li>
     </ul>
     <aside class="notes">
-      <p>Judges like to know it's real: mention what's production-ready vs. hacked together.</p>
+      <p>Judges like to know it's real: say what's production-ready and what's hacked together.</p>
     </aside>
   </section>
 
-  <!-- 7. Impact -->
+  <!-- 9. Impact -->
   <section class="slide" id="impact" data-title="Impact">
     <p class="kicker">Impact</p>
-    <h2>[Why this matters]</h2>
+    <h2>Better apps, without having to be an expert.</h2>
     <div class="stats">
-      <div class="stat"><span class="stat__value">[10×]</span><span class="stat__label">[faster at something]</span></div>
-      <div class="stat"><span class="stat__value">[0]</span><span class="stat__label">[lines of code for the customer]</span></div>
-      <div class="stat"><span class="stat__value">[3]</span><span class="stat__label">[products it works in]</span></div>
+      <div class="stat"><span class="stat__value">[N]</span><span class="stat__label">checks across Branding, Performance and Maintenance</span></div>
+      <div class="stat"><span class="stat__value">1 click</span><span class="stat__label">from finding a problem to fixing it</span></div>
+      <div class="stat"><span class="stat__value">[N]</span><span class="stat__label">[issues found in real customer or sample apps]</span></div>
     </div>
     <aside class="notes">
-      <p>Use real numbers from the demo if you have them, even rough ones.</p>
+      <p>If you can, run the scorecard on a few real apps before demo day and quote the numbers.</p>
     </aside>
   </section>
 
-  <!-- 8. What's next -->
+  <!-- 10. What's next -->
   <section class="slide" id="next" data-title="What's next">
     <p class="kicker">What's next</p>
-    <h2>[Where this goes after the hackathon]</h2>
+    <h2>[Where App Scorecard goes after the hackathon]</h2>
     <div class="split">
       <div>
-        <h3>Done this week</h3>
+        <h3>Built this week</h3>
         <ul class="points points--compact">
-          <li>[Built]</li>
-          <li>[Built]</li>
+          <li>Scorecard in App Designer</li>
+          <li>Branding, Performance and Maintenance checks</li>
+          <li>Go to Setting, Fix All and Smart Fix</li>
+          <li>Dismiss and Rescan</li>
         </ul>
       </div>
       <div>
         <h3>Next steps</h3>
         <ul class="points points--compact">
-          <li>[To do]</li>
+          <li>[More checks, e.g. accessibility]</li>
+          <li>[Smart Suggestions]</li>
           <li>[To do]</li>
         </ul>
       </div>
     </div>
     <aside class="notes">
-      <p>End on the ask: what would you need to ship this?</p>
+      <p>End on the ask: what would it take to ship this in App Designer?</p>
     </aside>
   </section>
 
-  <!-- 9. Thank you -->
+  <!-- 11. Thank you -->
   <section class="slide slide--title" id="thanks" data-title="Thank you / Q&amp;A">
     <p class="kicker">Thank you</p>
-    <h1>Questions?</h1>
-    <p class="lead">[Project Name] · [link to repo or demo]</p>
+    <div class="brand">
+      <span class="brand__icon"><svg><use href="#i-scorecard"/></svg></span>
+      <h1>Questions?</h1>
+    </div>
+    <p class="lead">App Scorecard · [link to repo or demo]</p>
     <aside class="notes">
-      <p>Press G to jump back to any slide during Q&amp;A, or 4 + Enter to go straight to the demo.</p>
+      <p>Press G to jump to any slide during Q&amp;A, or 6 + Enter to go straight to the demo.</p>
     </aside>
   </section>
 
