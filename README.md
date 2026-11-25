@@ -1,63 +1,74 @@
 # Hackathon 2026 — presentation site
 
 A tiny, dependency-free slide deck that runs on GitHub Pages and can embed live
-VertiGIS Studio Web apps. No build step: edit `index.html`, push, done.
+VertiGIS Studio Web apps. No build step: edit `slides.md`, push, done.
+
+**Just want to change the words on the slides? Read [EDITING.md](EDITING.md).**
 
 ```
-index.html      ← all slide content lives here
-css/deck.css    ← colours and layout (theme variables at the top)
-js/deck.js      ← navigation, presenter view, demo embedding
-.nojekyll       ← tells GitHub Pages to serve files as-is
+slides.md           ← all slide text lives here (plain text, see EDITING.md)
+index.html          ← page shell and icons; points at slides.md
+css/deck.css        ← colours and layout (theme variables at the top)
+js/slides-md.js     ← turns slides.md into slides
+js/deck.js          ← navigation, presenter view, demo embedding
+media/              ← screenshots, backup videos
+.nojekyll           ← tells GitHub Pages to serve files as-is
 ```
 
 ## Editing slides
 
-Each `<section class="slide">` in `index.html` is one slide, in order.
+The slides are written in `slides.md`, a simple Markdown-like format that
+`js/slides-md.js` turns into HTML when the page loads. The format, layouts and
+settings are documented for non-developers in [EDITING.md](EDITING.md).
 
-- `id="demo"` → the slide's URL is `…/#/demo` (or use its number: `#/4`).
-- `data-title="…"` → the name in the slide list and presenter view.
-- `<aside class="notes">…</aside>` → speaker notes, only shown in the presenter view.
+- The deck has to be served over HTTP (GitHub Pages, or
+  `python -m http.server`), because browsers won't let a page read
+  `slides.md` from a `file://` URL.
+- When the deck is served from `localhost`, it checks `slides.md` every 1.5
+  seconds and reloads itself when the file changes.
+- Press **E** (or use the link in the **?** help) to open `slides.md` in
+  GitHub's web editor. The link comes from `data-edit-url` on `<main>` in
+  `index.html`.
+- Lines starting with `<` are passed through as raw HTML, so anything the
+  format can't express can still be written by hand. The "From insight to fix"
+  slide does this for its imitation scorecard list.
 
-Ready-made building blocks: `.kicker`, `.lead`, `.points`, `.cards`/`.card`,
-`.stats`/`.stat`, `.flow`/`.flow__step` (architecture diagram), `.split`
-(two columns), `.team`, and `.with-shot` (text next to a screenshot from
-`media/`). Copy a slide and change the text.
+Available CSS building blocks for raw HTML: `.kicker`, `.lead`, `.points`,
+`.cards`/`.card`, `.stats`/`.stat`, `.flow`/`.flow__step`, `.split`, `.team`,
+`.with-shot`/`.shot`, and the App Scorecard look-alikes `.insights`/`.insight`,
+`.sev sev--high` / `.sev sev--medium`, `.tag` and `.ui-btn`. Icons are SVG
+symbols at the top of `index.html`: `:name:` in `slides.md`, or
+`<svg class="icon"><use href="#i-name"/></svg>` in HTML.
 
-App Scorecard look-alikes: `.insights`/`.insight` (a list like the All Insights
-panel), `.sev sev--high` / `.sev sev--medium` (severity markers), `.tag`
-(category label) and `.ui-btn` (an App Designer-style button). Icons are defined
-once at the top of `index.html` and used like
-`<svg class="icon"><use href="#i-sparkle"/></svg>`.
+The theme colours are variables at the top of `css/deck.css`, matched to App
+Designer: the dark rail, VertiGIS blue, and the red and orange severity colours.
 
-The theme colours are variables at the top of `css/deck.css`. They are matched
-to App Designer: the dark rail, VertiGIS blue, and the red and orange severity
-colours.
-
-Text in `[square brackets]` is a placeholder still to be filled in.
+To write slides directly in HTML instead, remove `data-source` from `<main>`
+and put `<section class="slide">` elements inside it.
 
 ## Live demos
 
-```html
-<section class="slide slide--demo" id="demo" data-title="Live demo">
-  <header class="slide__header"><h2>Live demo</h2></header>
-  <div class="demo"
-       data-src="https://your-studio-web-app-url"
-       data-label="Studio Web — with our changes"
-       data-preload
-       data-backup="media/demo-backup.mp4"></div>
-</section>
+```
+---
+layout: demo
+title: Live demo
+url: http://localhost:3000/
+label: Studio Web — with our changes
+backup: media/demo-backup.mp4
+
+# Live demo
 ```
 
-| Attribute      | What it does |
-|----------------|--------------|
-| `data-src`     | URL of the app to embed in an iframe. |
-| `data-label`   | Text in the demo toolbar. |
-| `data-preload` | Load the app in the background when the deck opens, so maps and sign-in are done before you reach the slide. |
-| `data-backup`  | Optional video file. Adds a **Backup video** button that swaps the live app for a recording. |
-| `data-allow-top-navigation` | Lets the app navigate the whole deck window (off by default, see Sign-in below). |
+| Setting | What it does |
+|---|---|
+| `url:` | Address of the app to embed in an iframe. |
+| `label:` | Text in the demo toolbar. |
+| `preload:` | Loads the app in the background when the deck opens, so maps and sign-in are done before you reach the slide. On by default; `preload: no` turns it off. |
+| `backup:` | Optional video file. Adds a **Backup video** button that swaps the live app for a recording. |
+| `allow-top-navigation: yes` | Lets the app navigate the whole deck window (off by default, see Sign-in below). |
 
-Wrap two `.demo` elements in `<div class="demo-compare">` for a side-by-side
-before/after.
+`layout: compare` shows two apps side by side, using `before:`,
+`before-label:`, `after:` and `after-label:`.
 
 Each demo has a toolbar with **Reload**, **New tab ↗** and **Fullscreen**. A
 demo keeps its state when you move between slides, so you can go back to it
@@ -75,7 +86,7 @@ Test this early. Things that can stop an app loading in an iframe:
   window, which would replace the deck. So demo frames are sandboxed: an app
   can't navigate the deck window, and Studio Web falls back to a **Sign in**
   button that opens a popup instead. Sign in through that popup before you
-  present. (Add `data-allow-top-navigation` to a `.demo` to turn the sandbox
+  present. (Add `allow-top-navigation: yes` to a demo slide to turn the sandbox
   off.) ArcGIS/portal sign-in pages also often refuse to render inside an
   iframe. Also, when the deck and the app are on different sites (for example
   the deck on GitHub Pages and the app on `localhost`), browsers keep the
@@ -85,7 +96,7 @@ Test this early. Things that can stop an app loading in an iframe:
 - **Local dev servers.** A `localhost` URL always points at the computer
   viewing the page. On GitHub Pages, only the presenter's own machine (running
   the app) will show the demo; anyone else opening the link sees an empty
-  frame, so set `data-backup` for them. Newer Chrome/Edge versions may also ask
+  frame, so set `backup:` for them. Newer Chrome/Edge versions may also ask
   for permission to reach local network devices, and Safari may block an
   `http://localhost` frame inside an HTTPS page.
 
@@ -93,10 +104,10 @@ Test this early. Things that can stop an app loading in an iframe:
 present from a local copy of the deck at `http://localhost:8000` (see
 [Running locally](#running-locally)). The deck and the app are then the same
 site, which avoids the problems above. Use the GitHub Pages copy for sharing the
-link only. Start the demo app before opening the deck, so `data-preload` can
+link only. Start the demo app before opening the deck, so preloading can
 warm it up.
 
-Always record a backup video of the demo and set `data-backup`.
+Always record a backup video of the demo and set `backup:` on the demo slide.
 
 ## Presenting
 
@@ -118,7 +129,7 @@ Presentation clickers that send PageUp/PageDown work too.
 
 **Presenter view** (press **P**, or open `index.html?presenter`) opens a second
 window with your notes, the next slide, a list of all slides, and a timer. The
-timer counts down from `data-talk-minutes` on `<body>` and turns amber in the
+timer counts down from `talk-minutes` at the top of `slides.md` and turns amber in the
 last minute and red when you run over. The two windows stay in sync, and the
 presenter window does not load the demo apps.
 

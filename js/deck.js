@@ -8,11 +8,15 @@
  * the deck from the presenter window even while the audience window has a
  * live demo focused.
  */
-(() => {
+(async () => {
   'use strict';
+
+  // Slides may be built from slides.md first (see slides-md.js).
+  await window.deckReady;
 
   const PRESENTER = new URLSearchParams(location.search).has('presenter');
   const deck = document.getElementById('deck');
+  const EDIT_URL = deck.dataset.editUrl || '';
   const slides = Array.from(deck.querySelectorAll(':scope > .slide'));
   const channel = 'BroadcastChannel' in window
     ? new BroadcastChannel('hackathon-deck:' + location.pathname)
@@ -136,7 +140,7 @@
     if (!src) {
       frame.append(h('div', { class: 'demo__empty' },
         h('strong', { text: 'No demo URL yet' }),
-        h('span', { text: 'Set data-src on this .demo element in index.html to your VertiGIS Studio Web app URL.' })));
+        h('span', { text: 'Add the app address to this slide in slides.md (url:, before: or after:).' })));
     }
   }
 
@@ -200,13 +204,15 @@
       ['B or .', 'Blank the screen'],
       ['R', 'Reload the demo on this slide'],
       ['S', 'Start / pause timer (presenter view)'],
+      ...(EDIT_URL ? [['E', 'Edit the slides on GitHub']] : []),
       ['?', 'This help'],
     ];
     overlays.help = h('div', { class: 'overlay', role: 'dialog', 'aria-label': 'Keyboard shortcuts', hidden: true },
       h('div', { class: 'overlay__panel overlay__panel--narrow' },
         h('div', { class: 'overlay__head' }, h('h2', { text: 'Keyboard shortcuts' }), button('Close', 'Close (Esc)', closeOverlays)),
         h('dl', { class: 'keys' }, ...keys.flatMap(([k, d]) => [h('dt', { text: k }), h('dd', { text: d })])),
-        h('p', { class: 'muted', text: 'Tip: once you click into a live demo, the demo has the keyboard. Use the ‹ › buttons, or drive from the presenter view.' })));
+        h('p', { class: 'muted', text: 'Tip: once you click into a live demo, the demo has the keyboard. Use the ‹ › buttons, or drive from the presenter view.' }),
+        EDIT_URL ? h('p', {}, h('a', { href: EDIT_URL, target: '_blank', rel: 'noopener', class: 'btn' }, '✎ Edit the slides on GitHub')) : ''));
 
     overlays.blank = h('div', { class: 'blank', hidden: true, onclick: () => setBlank(false) });
 
@@ -262,7 +268,7 @@
 
   const pv = {};
   const timer = {
-    limit: Number(document.body.dataset.talkMinutes) * 60 || 0, // seconds, 0 = count up
+    limit: Number(document.body.dataset.talkMinutes) * 60 || 0, // seconds, 0 = count up (set in slides.md)
     elapsed: 0, startedAt: 0, running: false,
   };
 
@@ -406,6 +412,7 @@
         if (PRESENTER) send({ type: 'reload-demo' }); else reloadCurrentDemos();
         break;
       case 's': case 'S': if (PRESENTER) { handled(); toggleTimer(); } break;
+      case 'e': case 'E': if (EDIT_URL) { handled(); window.open(EDIT_URL, '_blank', 'noopener'); } break;
       case 'Escape': if (blanked) { handled(); setBlank(false); } break;
     }
   }
@@ -444,8 +451,8 @@
     send({ type: 'hello' }); // ask the audience window where it is
   } else {
     // Warm up demos marked data-preload so they're ready when you reach them.
-    window.addEventListener('load', () => {
+    const preload = () =>
       setTimeout(() => document.querySelectorAll('.demo[data-preload]').forEach(d => loadDemo(d)), 1000);
-    });
+    if (document.readyState === 'complete') preload(); else window.addEventListener('load', preload);
   }
 })();
