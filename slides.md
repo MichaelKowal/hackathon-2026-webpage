@@ -39,7 +39,7 @@ A health check for VertiGIS Studio Web apps, built into App Designer.
 - [Team member]
 
 Notes:
-Introduce the team. One line: "We built a scorecard that tells you what's wrong with your app and helps you fix it, without leaving App Designer." 
+Introduce the team. One line: "We built a scorecard that tells you what's wrong with your app and helps you fix it, without leaving App Designer."
 
 ---
 kicker: The problem
