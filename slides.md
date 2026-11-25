@@ -33,10 +33,12 @@ title: Title
 
 A health check for VertiGIS Studio Web apps, built into App Designer.
 
-- [Team member]
-- [Team member]
-- [Team member]
-- [Team member]
+- Jack Basha
+- Jimmy Chung
+- Omar Jawhar
+- Michael Kowal
+- Alisa Lindley
+- Penny Berard-Toupin \[Honorary\]
 
 Notes:
 Introduce the team. One line: "We built a scorecard that tells you what's wrong with your app and helps you fix it, without leaving App Designer."
@@ -50,8 +52,8 @@ title: The problem
 
 - Errors and deprecated APIs in custom libraries only show up in the browser console.
 - Branding gaps, like a missing description or favicon, are easy to overlook.
-- Performance pitfalls, like layers reprojecting on the fly, are invisible while you design.
-- [Who feels this most? App authors, support, customers…]
+- Performance pitfalls, like layers re-projecting on the fly, are invisible while you design.
+- App authors have to spend a significant amount of time simply trying to identify potential problem areas.
 
 Notes:
 If you can, tell a real story: an app that shipped with a broken library or a slow map. Keep this under 45 seconds.
@@ -141,7 +143,7 @@ This slide is the summary of the demo. If time is short, skip it and show this l
 layout: demo
 id: demo
 title: Live demo
-url: http://localhost:3000/
+url: http://localhost:3000/#app=2b4b50401cdf493f977417d8ab1b6208
 label: VertiGIS Studio Web (localhost:3000)
 backup:
 
@@ -205,6 +207,25 @@ title: Impact
 
 Notes:
 If you can, run the scorecard on a few real apps before demo day and quote the numbers.
+
+---
+kicker: Development benefits
+id: development
+title: Development benefits
+
+# Benefits for development and testing within VertiGIS
+
+### Known issues
+The tool can check whether known issues are still occurring, helping to identify regressions.
+- BUG 538021: Layer icons copied over from another application's Map configuration retain their original resource URLs
+
+![A screenshot of broken layer icons due to BUG 538021](media/broken-layer-icons.png =200x)
+
+### Finding issues
+The process of building the tool helped identify a new bug, and more could be found through its development.
+- BUG 538401: Above a certain number of unique values, the unique value renderer reverts to the default symbology
+
+![A screenshot showing the Azure DevOps page for unique value renderer BUG 538401](media/unique-value-renderer-bug.png = 200x)
 
 ---
 layout: columns
