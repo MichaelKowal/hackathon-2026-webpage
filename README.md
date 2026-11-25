@@ -54,6 +54,7 @@ Text in `[square brackets]` is a placeholder still to be filled in.
 | `data-label`   | Text in the demo toolbar. |
 | `data-preload` | Load the app in the background when the deck opens, so maps and sign-in are done before you reach the slide. |
 | `data-backup`  | Optional video file. Adds a **Backup video** button that swaps the live app for a recording. |
+| `data-allow-top-navigation` | Lets the app navigate the whole deck window (off by default, see Sign-in below). |
 
 Wrap two `.demo` elements in `<div class="demo-compare">` for a side-by-side
 before/after.
@@ -70,13 +71,30 @@ Test this early. Things that can stop an app loading in an iframe:
   the host sends `X-Frame-Options` or a CSP `frame-ancestors` header. Use
   **New tab ↗**, or allow `https://<you>.github.io` as a frame ancestor on a
   server you control.
-- **Sign-in.** ArcGIS/portal sign-in pages often refuse to render inside an
-  iframe. Use a publicly shared app and web map, or sign in using **New tab ↗**
-  first (it shares cookies with the iframe in most cases).
-- **Local dev servers.** The deck is served over HTTPS on GitHub Pages. Some
-  browsers block an `http://localhost` iframe inside an HTTPS page. Either run
-  the deck locally too (see below), serve your app over HTTPS, or use
-  **New tab ↗**.
+- **Sign-in.** Studio Web normally signs in by redirecting the whole browser
+  window, which would replace the deck. So demo frames are sandboxed: an app
+  can't navigate the deck window, and Studio Web falls back to a **Sign in**
+  button that opens a popup instead. Sign in through that popup before you
+  present. (Add `data-allow-top-navigation` to a `.demo` to turn the sandbox
+  off.) ArcGIS/portal sign-in pages also often refuse to render inside an
+  iframe. Also, when the deck and the app are on different sites (for example
+  the deck on GitHub Pages and the app on `localhost`), browsers keep the
+  iframe's storage and cookies separate. Signing in to the app in its own tab
+  then does **not** sign in the copy inside the deck. Serve the deck from the
+  same host as the app (see below), or use a publicly shared app and web map.
+- **Local dev servers.** A `localhost` URL always points at the computer
+  viewing the page. On GitHub Pages, only the presenter's own machine (running
+  the app) will show the demo; anyone else opening the link sees an empty
+  frame, so set `data-backup` for them. Newer Chrome/Edge versions may also ask
+  for permission to reach local network devices, and Safari may block an
+  `http://localhost` frame inside an HTTPS page.
+
+**Recommended for this project:** the demo runs at `http://localhost:3000/`, so
+present from a local copy of the deck at `http://localhost:8000` (see
+[Running locally](#running-locally)). The deck and the app are then the same
+site, which avoids the problems above. Use the GitHub Pages copy for sharing the
+link only. Start the demo app before opening the deck, so `data-preload` can
+warm it up.
 
 Always record a backup video of the demo and set `data-backup`.
 

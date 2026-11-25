@@ -152,7 +152,15 @@
       src,
       title: el.dataset.label || 'Live demo',
       allow: 'fullscreen; geolocation; clipboard-read; clipboard-write',
-      allowfullscreen: true,
+      // Everything an app normally needs, except navigating the top window.
+      // Without this, an app that redirects to a sign-in page (as Studio Web
+      // does) replaces the whole deck. Popups are still allowed, so popup-based
+      // sign-in can work. Add data-allow-top-navigation to opt out.
+      sandbox: 'allowTopNavigation' in el.dataset ? undefined : [
+        'allow-scripts', 'allow-same-origin', 'allow-forms', 'allow-popups',
+        'allow-popups-to-escape-sandbox', 'allow-modals', 'allow-downloads',
+        'allow-pointer-lock', 'allow-presentation', 'allow-storage-access-by-user-activation',
+      ].join(' '),
     });
     if (existing) existing.replaceWith(iframe); else frame.prepend(iframe);
   }
