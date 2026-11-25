@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Project Name] — Hackathon 2026</title>
+  <link rel="stylesheet" href="css/deck.css">
+</head>
+<!--
+  data-talk-minutes: your time limit. The presenter view counts down from it
+  and turns red when you run over. Remove it to get a count-up timer instead.
+-->
+<body data-talk-minutes="5">
+
+<main id="deck">
+
+  <!-- ============================================================
+       HOW TO EDIT
+       - Each <section class="slide"> is one slide, in order.
+       - The id becomes the URL (#/problem), so you can link straight to a slide.
+       - data-title is what shows in the slide list and presenter view.
+       - <aside class="notes"> is only visible in the presenter view (press P).
+       ============================================================ -->
+
+  <!-- 1. Title -->
+  <section class="slide slide--title" id="title" data-title="Title">
+    <p class="kicker">VertiGIS Hackathon 2026</p>
+    <h1>[Project Name]</h1>
+    <p class="lead">[One-line tagline: what it does, for whom.]</p>
+    <ul class="team">
+      <li>[Team member]</li>
+      <li>[Team member]</li>
+      <li>[Team member]</li>
+      <li>[Team member]</li>
+    </ul>
+    <aside class="notes">
+      <p>Introduce the team in one breath. Say the tagline out loud — it's the thing judges should remember.</p>
+    </aside>
+  </section>
+
+  <!-- 2. Problem -->
+  <section class="slide" id="problem" data-title="The problem">
+    <p class="kicker">The problem</p>
+    <h2>[A short, sharp statement of the pain.]</h2>
+    <ul class="points">
+      <li>[Who has this problem?]</li>
+      <li>[What does it cost them today — time, errors, money?]</li>
+      <li>[Why hasn't it been solved already?]</li>
+    </ul>
+    <aside class="notes">
+      <p>Tell it as a story about one real user if you can. Keep this under 45 seconds.</p>
+    </aside>
+  </section>
+
+  <!-- 3. Solution -->
+  <section class="slide" id="solution" data-title="Our solution">
+    <p class="kicker">Our solution</p>
+    <h2>[What we built, in one sentence.]</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>[Capability 1]</h3>
+        <p>[One or two lines on what it does.]</p>
+      </article>
+      <article class="card">
+        <h3>[Capability 2]</h3>
+        <p>[One or two lines on what it does.]</p>
+      </article>
+      <article class="card">
+        <h3>[Capability 3]</h3>
+        <p>[One or two lines on what it does.]</p>
+      </article>
+    </div>
+    <aside class="notes">
+      <p>Set up the demo: "Let me show you instead of telling you."</p>
+    </aside>
+  </section>
+
+  <!-- 4. Live demo
+       data-src      URL of the VertiGIS Studio Web app to embed
+       data-label    shown in the demo toolbar
+       data-preload  load it in the background as soon as the deck opens, so it's warm when you get here
+       data-backup   (optional) path/URL to a recorded video to fall back on if the live demo misbehaves
+  -->
+  <section class="slide slide--demo" id="demo" data-title="Live demo">
+    <header class="slide__header"><h2>Live demo</h2></header>
+    <div class="demo"
+         data-src=""
+         data-label="VertiGIS Studio Web — with our changes"
+         data-preload
+         data-backup=""></div>
+    <aside class="notes">
+      <ol>
+        <li>[Step 1 of the demo script]</li>
+        <li>[Step 2]</li>
+        <li>[Step 3 — the "wow" moment]</li>
+      </ol>
+      <p>If it breaks: hit "Backup video" in the demo toolbar and keep talking.</p>
+    </aside>
+  </section>
+
+  <!-- 5. Before / after — two apps side by side -->
+  <section class="slide slide--demo" id="before-after" data-title="Before / after">
+    <header class="slide__header"><h2>Before / after</h2></header>
+    <div class="demo-compare">
+      <div class="demo" data-src="" data-label="Before — stock Studio Web"></div>
+      <div class="demo" data-src="" data-label="After — with our changes"></div>
+    </div>
+    <aside class="notes">
+      <p>Do the same action in both apps so the difference is obvious. Delete this slide if you don't need it.</p>
+    </aside>
+  </section>
+
+  <!-- 6. How it works -->
+  <section class="slide" id="how-it-works" data-title="How it works">
+    <p class="kicker">How it works</p>
+    <h2>[Architecture in one picture]</h2>
+    <ol class="flow">
+      <li class="flow__step"><strong>VertiGIS Studio Web</strong><span>[the app]</span></li>
+      <li class="flow__step flow__step--ours"><strong>[Our component]</strong><span>[custom component / service / workflow]</span></li>
+      <li class="flow__step"><strong>[Data / service]</strong><span>[ArcGIS, API, model…]</span></li>
+    </ol>
+    <ul class="points points--compact">
+      <li>[Key technical decision]</li>
+      <li>[Something hard you solved]</li>
+    </ul>
+    <aside class="notes">
+      <p>Judges like to know it's real: mention what's production-ready vs. hacked together.</p>
+    </aside>
+  </section>
+
+  <!-- 7. Impact -->
+  <section class="slide" id="impact" data-title="Impact">
+    <p class="kicker">Impact</p>
+    <h2>[Why this matters]</h2>
+    <div class="stats">
+      <div class="stat"><span class="stat__value">[10×]</span><span class="stat__label">[faster at something]</span></div>
+      <div class="stat"><span class="stat__value">[0]</span><span class="stat__label">[lines of code for the customer]</span></div>
+      <div class="stat"><span class="stat__value">[3]</span><span class="stat__label">[products it works in]</span></div>
+    </div>
+    <aside class="notes">
+      <p>Use real numbers from the demo if you have them, even rough ones.</p>
+    </aside>
+  </section>
+
+  <!-- 8. What's next -->
+  <section class="slide" id="next" data-title="What's next">
+    <p class="kicker">What's next</p>
+    <h2>[Where this goes after the hackathon]</h2>
+    <div class="split">
+      <div>
+        <h3>Done this week</h3>
+        <ul class="points points--compact">
+          <li>[Built]</li>
+          <li>[Built]</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Next steps</h3>
+        <ul class="points points--compact">
+          <li>[To do]</li>
+          <li>[To do]</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>End on the ask: what would you need to ship this?</p>
+    </aside>
+  </section>
+
+  <!-- 9. Thank you -->
+  <section class="slide slide--title" id="thanks" data-title="Thank you / Q&amp;A">
+    <p class="kicker">Thank you</p>
+    <h1>Questions?</h1>
+    <p class="lead">[Project Name] · [link to repo or demo]</p>
+    <aside class="notes">
+      <p>Press G to jump back to any slide during Q&amp;A, or 4 + Enter to go straight to the demo.</p>
+    </aside>
+  </section>
+
+</main>
+
+<script src="js/deck.js"></script>
+</body>
+</html>
