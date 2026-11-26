@@ -98,18 +98,18 @@ cards: compact
 <ul class="insights">
   <li class="insight">
     <span class="sev sev--high"><svg class="icon"><use href="#i-high"/></svg>High</span>
-    <div><p class="insight__title">Error in main.js <span class="tag">Maintenance</span></p><p class="insight__desc">A custom library raised an error in the preview.</p></div>
-    <span class="insight__actions"><span class="ui-btn">Go to Setting</span></span>
+    <div><p class="insight__title">Error in main.js <span class="tag">Maintenance</span></p><p class="insight__desc">A custom library raised an error in the preview.</p><span class="insight__actions"><span class="ui-btn">Go to Setting</span></span></div>
+    <span class="insight__dismiss" title="Dismiss"><svg class="icon"><use href="#i-dismiss"/></svg></span>
   </li>
   <li class="insight">
     <span class="sev sev--medium"><svg class="icon"><use href="#i-medium"/></svg>Medium</span>
-    <div><p class="insight__title">No App Description <span class="tag">Branding</span></p><p class="insight__desc">Descriptions are shown in the portal and in search results.</p></div>
-    <span class="insight__actions"><span class="ui-btn ui-btn--outline">Add Description</span><span class="ui-btn ui-btn--outline"><svg class="icon"><use href="#i-sparkle"/></svg>Smart Fix</span></span>
+    <div><p class="insight__title">No App Description <span class="tag">Branding</span></p><p class="insight__desc">Descriptions are shown in the portal and in search results.</p><span class="insight__actions"><span class="ui-btn ui-btn--outline">Add Description</span><span class="ui-btn ui-btn--outline"><svg class="icon"><use href="#i-sparkle"/></svg>Smart Fix</span></span></div>
+    <span class="insight__dismiss" title="Dismiss"><svg class="icon"><use href="#i-dismiss"/></svg></span>
   </li>
   <li class="insight">
     <span class="sev sev--medium"><svg class="icon"><use href="#i-medium"/></svg>Medium</span>
-    <div><p class="insight__title">Layers in a Different Spatial Reference <span class="tag">Performance</span></p><p class="insight__desc">Each layer is reprojected as it draws.</p></div>
-    <span class="insight__actions"><span class="ui-btn">Go to Setting</span></span>
+    <div><p class="insight__title">Layers in a Different Spatial Reference <span class="tag">Performance</span></p><p class="insight__desc">Each layer is reprojected as it draws.</p><span class="insight__actions"><span class="ui-btn">Go to Setting</span></span></div>
+    <span class="insight__dismiss" title="Dismiss"><svg class="icon"><use href="#i-dismiss"/></svg></span>
   </li>
 </ul>
 

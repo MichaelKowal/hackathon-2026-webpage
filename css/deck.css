@@ -251,13 +251,15 @@ code { font-family: var(--mono); font-size: 0.9em; }
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 .insight {
-  display: grid; grid-template-columns: auto 1fr auto; gap: calc(var(--u) * 1.8); align-items: start;
-  padding: calc(var(--u) * 1.4) calc(var(--u) * 2);
+  display: grid; grid-template-columns: auto 1fr auto; gap: calc(var(--u) * 1.5); align-items: start;
+  padding: calc(var(--u) * 1.1) calc(var(--u) * 1.8);
 }
 .insight + .insight { border-top: 1px solid var(--line); }
-.insight__title { font-weight: 600; font-size: calc(var(--u) * 1.9); }
-.insight__desc { color: var(--muted); font-size: calc(var(--u) * 1.55); }
-.insight__actions { display: flex; gap: calc(var(--u) * 0.8); }
+.insight__title { font-weight: 600; font-size: calc(var(--u) * 1.65); }
+.insight__desc { color: var(--muted); font-size: calc(var(--u) * 1.4); }
+.insight__actions { display: flex; gap: calc(var(--u) * 0.8); margin-top: calc(var(--u) * 0.7); }
+.insight .ui-btn { font-size: calc(var(--u) * 1.25); }
+.insight__dismiss { color: var(--muted); font-size: calc(var(--u) * 1.9); line-height: 1; }
 
 /* Buttons drawn like App Designer's (for illustration on slides) */
 .ui-btn {
