@@ -219,13 +219,9 @@ title: Development benefits
 The tool can check whether known issues are still occurring, helping to identify regressions.
 - BUG 538021: Layer icons copied over from another application's Map configuration retain their original resource URLs
 
-![A screenshot of broken layer icons due to BUG 538021](media/broken-layer-icons.png){width=50%}
-
 ### Finding issues
 The process of building the tool helped identify a new bug, and more could be found through its development.
 - BUG 538401: Above a certain number of unique values, the unique value renderer reverts to the default symbology
-
-![A screenshot showing the Azure DevOps page for unique value renderer BUG 538401](media/unique-value-renderer-bug.png){width=50%}
 
 ---
 layout: columns
