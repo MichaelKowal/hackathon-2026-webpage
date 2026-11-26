@@ -33,13 +33,14 @@ title: Title
 
 A health check for VertiGIS Studio Web apps, built into App Designer.
 
-Latitude Geographacks:
 - Jack Basha
 - Jimmy Chung
 - Omar Jawhar
 - Michael Kowal
 - Alisa Lindley
-- Penny Berard-Toupin [Honorary]
+- Penny Berard-Toupin (Honorary)
+
+Team: Latitude Geographacks
 
 Notes:
 "Hi everyone, we are the Latitude Geographacks team. Onboard are Jack Basha, Jimmy Chung, Omar Jawhar, Michael Kowal, myself, and our honorary member, Penny Berard-Toupin. Together, we built a scorecard in App Designer that gives you areas of improvement for your app and helps you implement fixes."
@@ -54,7 +55,7 @@ title: The problem
 - Errors and deprecated APIs in custom libraries only show up in the browser console.
 - Branding gaps, like a missing description or favicon, are easy to overlook.
 - Performance pitfalls, like layers re-projecting on the fly, are invisible while you design.
-- App authors have to spend a significant amount of time simply trying to identify potential problem areas.
+- App authors have to spend a significant amount of time trying to identify potential problem areas.
 
 Notes:
 "So why do this? We essentially wanted to help app authors identify problem spots in their apps that are easy to miss. To give you a real-world example, Prince Edward County was running into some issues with their production app some time ago and had to contact support since they couldn't identify where the problem was coming from. It turned out to be because of an image URL that had been copied over from their development app, which was inaccessible since it was in a different environment. Having a tool in App Designer identify this simple issue for them could have saved them some time and stress."
@@ -66,40 +67,24 @@ title: Meet App Scorecard
 
 # One click scans the app and lists what needs attention.
 
-- Opens from the **Scorecard** button in App Designer's left rail.
-- Insights are grouped into **Branding**, **Performance** and **Maintenance**.
-- Each insight is sorted by priority and says what's wrong, why it matters and how to fix it.
-
 ![The App Scorecard dialog in App Designer, listing insights by priority](media/scorecard.png "App Scorecard in App Designer (work in progress)")
-
-Notes:
-"Point out the left rail button, the categories with counts, and that High items come first."
-
----
-kicker: What it checks
-id: checks
-title: What it checks
-
-# Three kinds of insights, each with a priority.
 
 ### :branding: Branding
 Does the app look finished?
-- No app description
-- No app favicon
 
 ### :performance: Performance
 Will the app be fast?
-- Layers in a different spatial reference than the map
 
 ### :maintenance: Maintenance
 Will the app keep working?
-- Errors raised by custom libraries
-- Deprecated API usage
 
-Priorities: {High} · {Medium} · [add more checks as you build them]
+### Internationalization
+Are there any regional issues?
+
+Priorities: {High} · {Medium} · {Low} · {Info}
 
 Notes:
-Mention that new checks are easy to add. [How many checks do you have by demo day?]
+"This is where the app scorecard comes in. It can be opened from the Scorecard button in the left rail of App Designer, and at first glance it gives you a score out of 100 for your app as well as a list of all insights. These insights can be narrowed down by drilling down into the categories on the left. High impact items, like things that could break the app, are listed first, followed by medium impact, low impact, and purely informational items. There is also an AI-powered smart tool to give you additional suggestions that aren't covered by the standard checks."
 
 ---
 kicker: From insight to fix
@@ -131,6 +116,9 @@ cards: compact
 ### Go to Setting
 Jumps straight to the setting that needs changing.
 
+### Fix
+Quick fixes are available for easy settings like adding a generic app description.
+
 ### :sparkle: Smart Fix
 Uses AI to fix it, like writing the description. Fix All does them all.
 
@@ -160,21 +148,7 @@ Notes:
 The demo runs at http://localhost:3000, so start it before presenting and present from the local copy of the deck (http://localhost:8000), not GitHub Pages. If it won't load or sign in here, use **New tab ↗**. If anything breaks, use **Backup video**.
 
 ---
-layout: compare
-id: before-after
-title: Before / after
-icon: fixed
-before:
-before-label: Before — app as published
-after:
-after-label: After — scorecard fixes applied
 
-# Before / after the scorecard fixes
-
-Notes:
-Show the same Studio Web app before and after fixing: favicon in the tab, description, faster map. Delete this slide if you don't need it.
-
----
 layout: flow
 kicker: How it works
 id: how-it-works
@@ -195,21 +169,6 @@ Notes:
 Judges like to know it's real: say what's production-ready and what's hacked together.
 
 ---
-layout: stats
-kicker: Impact
-id: impact
-title: Impact
-
-# Better apps, without having to be an expert.
-
-- **[N]** checks across Branding, Performance and Maintenance
-- **1 click** from finding a problem to fixing it
-- **[N]** [issues found in real customer or sample apps]
-
-Notes:
-If you can, run the scorecard on a few real apps before demo day and quote the numbers.
-
----
 kicker: Development benefits
 id: development
 title: Development benefits
@@ -224,24 +183,27 @@ The tool can check whether known issues are still occurring, helping to identify
 The process of building the tool helped identify a new bug, and more could be found through its development.
 - BUG 538401: Above a certain number of unique values, the unique value renderer reverts to the default symbology
 
+Notes:
+"In addition to helping app authors debug and optimize their apps, this can also help our own processes. Having checks that identify known issues can help us keep track of them in our test apps and detect potential regressions. They can also speed up the support process and identify new bugs, especially since the AI tool gives insight into the app that the conventional checks do not cover. Working on the tool already helped us identify a new bug. Checks are easy to add - I mean we managed to squeeze in this many in just a day and a half - so the tool can be improved as development progresses in other areas of App Designer and VertiGIS Studio Web."
+
 ---
 layout: columns
 kicker: What's next
 id: next
 title: What's next
 
-# [Where App Scorecard goes after the hackathon]
+# Where does the App Scorecard go after the hackathon?
 
 ### Built this week
-- Scorecard in App Designer
-- Branding, Performance and Maintenance checks
-- Go to Setting, Fix All and Smart Fix
-- Dismiss and Rescan
+- Scorecard in App Designer with number grade
+- Branding, Performance, Maintenance, and Internationalization checks ranked by priority
+- AI Smart Suggestions
+- Problem resolution via Go to Setting, Fix All, Smart Fix, and Dismiss
 
 ### Next steps
-- [More checks, e.g. accessibility]
-- [Smart Suggestions]
-- [To do]
+- More categories, e.g. Accessibility
+- More checks in each category
+- Implementation in other VertiGIS Studio Designers
 
 Notes:
 End on the ask: what would it take to ship this in App Designer?
@@ -255,7 +217,9 @@ title: Thank you / Q&A
 
 # Questions?
 
-App Scorecard · [link to repo or demo]
+App Scorecard Demo:
+
+[https://webzoo.latitudegeo.com/builds/AppDesigner/54235/](https://webzoo.latitudegeo.com/builds/AppDesigner/54235/)
 
 Notes:
 Press G to jump to any slide during Q&A, or 6 + Enter to go straight to the demo.
