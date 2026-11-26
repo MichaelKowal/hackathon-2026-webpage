@@ -78,7 +78,7 @@ Will the app be fast?
 ### :maintenance: Maintenance
 Will the app keep working?
 
-### Internationalization
+### :internationalization: Internationalization
 Are there any regional issues?
 
 Priorities: {High} · {Medium} · {Low} · {Info}
@@ -148,13 +148,12 @@ Notes:
 The demo runs at http://localhost:3000, so start it before presenting and present from the local copy of the deck (http://localhost:8000), not GitHub Pages. If it won't load or sign in here, use **New tab ↗**. If anything breaks, use **Backup video**.
 
 ---
-
 layout: flow
 kicker: How it works
 id: how-it-works
 title: How it works
 
-# [How the scorecard is put together]
+# Lots of little checks
 
 - **App Designer** — App config + live preview
 - **Scorecard checks** — Branding · Performance · Maintenance (highlight)

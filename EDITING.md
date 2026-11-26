@@ -61,7 +61,7 @@ Tell a real story here. Keep it under 45 seconds.
 | `### Title` + lines under it | A box (card). Boxes next to each other sit side by side. |
 | `![Description](media/picture.png "Caption")` | A picture, shown to the right of the text |
 | `Notes:` on its own line | Everything below it is speaker notes, only shown in the presenter view |
-| `{High}` / `{Medium}` | The word in the scorecard's red or orange |
+| `{High}` / `{Medium}` / `{Low}` / `{Info}` | The word in the scorecard's colour for that priority |
 | `:sparkle:` | A small icon (see the list below) |
 | `[Team member]` | Nothing special: square brackets are just our way of marking text still to fill in |
 
@@ -117,7 +117,7 @@ their values, but keep the word before the colon exactly as it is.
 Write the name between colons, e.g. `:branding:`.
 
 `:scorecard:` `:high:` `:medium:` `:fixed:` `:sparkle:` `:branding:`
-`:performance:` `:maintenance:` `:dismiss:`
+`:performance:` `:maintenance:` `:internationalization:` `:dismiss:`
 
 ## The one tricky slide
 

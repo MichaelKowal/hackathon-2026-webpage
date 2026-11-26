@@ -142,7 +142,7 @@ window.deckReady = (async () => {
 
   function icon(name) { return `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`; }
 
-  /** **bold**, *italic*, `code`, [link](url), :icon-name:, {High} / {Medium} */
+  /** **bold**, *italic*, `code`, [link](url), :icon-name:, {High} / {Medium} / {Low} / {Info} */
   function inline(s) {
     const codes = [];
     s = s.replace(/`([^`]+)`/g, (_, c) => `\u0000${codes.push(esc(c)) - 1}\u0000`);
@@ -151,7 +151,7 @@ window.deckReady = (async () => {
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     s = s.replace(/(^|[^*\w])\*(?!\s)(.+?)\*(?!\w)/g, '$1<em>$2</em>');
     s = s.replace(/:([a-z][a-z-]*):/g, (whole, n) => ICONS.has(n) ? icon(n) : whole);
-    s = s.replace(/\{(High|Medium|Low)\}/gi,
+    s = s.replace(/\{(High|Medium|Low|Info)\}/gi,
       (_, w) => `<span class="sev-inline sev--${w.toLowerCase()}">${w}</span>`);
     return s.replace(/\u0000(\d+)\u0000/g, (_, n) => `<code>${codes[n]}</code>`);
   }

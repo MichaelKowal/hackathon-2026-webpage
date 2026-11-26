@@ -19,6 +19,8 @@
   --accent-2: #1a6db5;
   --high: #d0021b;          /* "High" severity */
   --medium: #c25700;        /* "Medium" severity */
+  --low: #1a6db5;           /* "Low" severity */
+  --info: #5f6368;          /* "Info" severity */
   --ok: #2e7d32;
   --warn: #c25700;
   --danger: #d0021b;
@@ -105,6 +107,7 @@ code { font-family: var(--mono); font-size: 0.9em; }
 .slide--title h1 { font-size: calc(var(--u) * 8); }
 .slide--title .lead { color: #c9ced4; }
 .slide--title .kicker { color: var(--accent-light); }
+.slide--title a { color: var(--accent-light); }
 
 .brand {
   display: flex; align-items: center; gap: calc(var(--u) * 2.2);
@@ -192,9 +195,17 @@ code { font-family: var(--mono); font-size: 0.9em; }
 }
 .with-shot > div { display: flex; flex-direction: column; gap: calc(var(--u) * 1.6); }
 .with-shot h2 { font-size: calc(var(--u) * 2.8); }
+/* Cards beside a picture sit two to a row so they don't push the slide off-screen */
+.with-shot .cards { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 1.2); }
+.with-shot .card { padding: calc(var(--u) * 1.4) calc(var(--u) * 1.6); }
+.with-shot .card h3 { font-size: calc(var(--u) * 1.8); margin-bottom: calc(var(--u) * 0.4); }
+.with-shot .card p { font-size: calc(var(--u) * 1.5); }
 
 /* Smaller cards for a row of short explanations */
-.cards--compact { gap: calc(var(--u) * 1.4); }
+.cards--compact {
+  gap: calc(var(--u) * 1.4);
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--u) * 15), 1fr));
+}
 .cards--compact .card { padding: calc(var(--u) * 1.3) calc(var(--u) * 1.6); box-shadow: none; background: var(--bg-2); }
 .cards--compact .card h3 { font-size: calc(var(--u) * 1.7); margin-bottom: calc(var(--u) * 0.4); }
 .cards--compact .card p { font-size: calc(var(--u) * 1.45); }
@@ -230,6 +241,8 @@ code { font-family: var(--mono); font-size: 0.9em; }
 .sev-inline { font-weight: 600; }
 .sev-inline.sev--high { color: var(--high); }
 .sev-inline.sev--medium { color: var(--medium); }
+.sev-inline.sev--low { color: var(--low); }
+.sev-inline.sev--info { color: var(--info); }
 
 /* A list of insights, mimicking the "All Insights" panel */
 .insights {
