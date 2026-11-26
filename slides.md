@@ -160,9 +160,9 @@ title: How it works
 - **Insights** — Prioritized, with what, why and how to fix
 - **Fixes** — Go to Setting · Fix · :sparkle: Smart Fix
 
-- [How a check is defined, and how easy it is to add one]
-- [How errors from the preview are captured]
-- [What powers Smart Fix]
+- Checks are structured objects that can be added anywhere throughout the project.  The scorecard accepts any number of checks and runs through each of them every scan.
+- The scorecard uses Pinpoint Search to correctly point users to the problem.
+- Smart Fix is powered by the AI chat service, limited to one scope per issue. Every reply is checked before it's applied, and the whole fix can be undone.
 
 Notes:
 Judges like to know it's real: say what's production-ready and what's hacked together.
