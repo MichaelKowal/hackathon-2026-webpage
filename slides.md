@@ -156,7 +156,7 @@ title: How it works
 # Lots of little checks
 
 - **App Designer** — App config + live preview
-- **Scorecard checks** — Branding · Performance · Maintenance (highlight)
+- **Scorecard checks** — Branding · Performance · Maintenance · Internationalization (highlight)
 - **Insights** — Prioritized, with what, why and how to fix
 - **Fixes** — Go to Setting · Fix · :sparkle: Smart Fix
 
