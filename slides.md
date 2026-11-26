@@ -33,6 +33,7 @@ title: Title
 
 A health check for VertiGIS Studio Web apps, built into App Designer.
 
+Latitude Geographacks:
 - Jack Basha
 - Jimmy Chung
 - Omar Jawhar
@@ -41,7 +42,7 @@ A health check for VertiGIS Studio Web apps, built into App Designer.
 - Penny Berard-Toupin [Honorary]
 
 Notes:
-Introduce the team. One line: "We built a scorecard that tells you what's wrong with your app and helps you fix it, without leaving App Designer."
+"Hi everyone, we are the Latitude Geographacks team. Onboard are Jack Basha, Jimmy Chung, Omar Jawhar, Michael Kowal, myself, and our honorary member, Penny Berard-Toupin. Together, we built a scorecard in App Designer that gives you areas of improvement for your app and helps you implement fixes."
 
 ---
 kicker: The problem
@@ -56,7 +57,7 @@ title: The problem
 - App authors have to spend a significant amount of time simply trying to identify potential problem areas.
 
 Notes:
-If you can, tell a real story: an app that shipped with a broken library or a slow map. Keep this under 45 seconds.
+"So why do this? We essentially wanted to help app authors identify problem spots in their apps that are easy to miss. To give you a real-world example, Prince Edward County was running into some issues with their production app some time ago and had to contact support since they couldn't identify where the problem was coming from. It turned out to be because of an image URL that had been copied over from their development app, which was inaccessible since it was in a different environment. Having a tool in App Designer identify this simple issue for them could have saved them some time and stress."
 
 ---
 kicker: Our solution
@@ -69,10 +70,10 @@ title: Meet App Scorecard
 - Insights are grouped into **Branding**, **Performance** and **Maintenance**.
 - Each insight is sorted by priority and says what's wrong, why it matters and how to fix it.
 
-![The App Scorecard dialog in App Designer, listing insights by priority](media/scorecard-all-insights.png "App Scorecard in App Designer (work in progress)")
+![The App Scorecard dialog in App Designer, listing insights by priority](media/scorecard.png "App Scorecard in App Designer (work in progress)")
 
 Notes:
-Point out the left rail button, the categories with counts, and that High items come first.
+"Point out the left rail button, the categories with counts, and that High items come first."
 
 ---
 kicker: What it checks
